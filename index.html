@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Be My Valentine 💖</title>
+<title>For Aduu 💗</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -23,7 +23,7 @@ body{
   border-radius:25px;
   text-align:center;
   box-shadow:0 20px 40px rgba(0,0,0,0.15);
-  max-width:330px;
+  max-width:340px;
   width:90%;
   position:relative;
   z-index:2;
@@ -75,12 +75,7 @@ button{
   100%{transform:scale(1);opacity:1;}
 }
 
-.couples{
-  font-size:40px;
-  margin-top:10px;
-}
-
-.flowers, .hearts{
+.flowers,.hearts{
   position:absolute;
   width:100%;
   height:100%;
@@ -89,7 +84,7 @@ button{
   left:0;
 }
 
-.flower, .heart{
+.flower,.heart{
   position:absolute;
   font-size:24px;
   animation:float 6s linear infinite;
@@ -113,6 +108,11 @@ button{
   50%{transform:scale(1.1);}
   100%{transform:scale(1);}
 }
+
+.couples{
+  font-size:40px;
+  margin-top:10px;
+}
 </style>
 </head>
 
@@ -122,7 +122,7 @@ button{
 <div class="hearts"></div>
 
 <div class="card" id="mainCard">
-  <h1>Will you be my Valentine? 💘</h1>
+  <h1>Aduu, will you be my Valentine? 💘</h1>
   <div class="buttons">
     <button id="yesBtn">YES 💕</button>
     <button id="noBtn">NO 🙄</button>
@@ -130,12 +130,15 @@ button{
 </div>
 
 <div class="card hidden love" id="loveCard">
-  <h1 class="big-love">I LOVE YOU 💖</h1>
+  <h1 class="big-love">I LOVE YOU, ADUU 💖</h1>
   <div class="couples">👩‍❤️‍👨 💑 👩‍❤️‍👨</div>
   <p style="color:#ff4d6d;margin-top:10px;">
-    You got me forever 🥹💞
+    It’s golden, like daylight ✨
   </p>
 </div>
+
+<!-- MUSIC -->
+<audio id="music" src="daylight.mp3"></audio>
 
 <script>
 const yesBtn=document.getElementById("yesBtn");
@@ -144,6 +147,7 @@ const mainCard=document.getElementById("mainCard");
 const loveCard=document.getElementById("loveCard");
 const flowers=document.querySelector(".flowers");
 const hearts=document.querySelector(".hearts");
+const music=document.getElementById("music");
 
 let scale=1;
 
@@ -156,6 +160,8 @@ noBtn.addEventListener("click",()=>{
 yesBtn.addEventListener("click",()=>{
   mainCard.classList.add("hidden");
   loveCard.classList.remove("hidden");
+  music.volume=0.6;
+  music.play();
   createHearts();
 });
 
@@ -171,7 +177,7 @@ function createFlowers(){
 }
 
 function createHearts(){
-  for(let i=0;i<25;i++){
+  for(let i=0;i<30;i++){
     let h=document.createElement("div");
     h.className="heart";
     h.innerHTML="💖";
