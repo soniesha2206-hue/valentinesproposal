@@ -1,132 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Be My Valentine 💘</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+<style>
+body{
+  margin:0;
+  height:100vh;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#ffb6c1,#ffe4e1);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      max-width: 320px;
-      width: 90%;
-    }
+.card{
+  background:#fff;
+  padding:30px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  max-width:330px;
+  width:90%;
+  position:relative;
+  z-index:2;
+}
 
-    h1 {
-      color: #ff4d6d;
-      font-size: 24px;
-      margin-bottom: 25px;
-    }
+h1{
+  color:#ff4d6d;
+  margin-bottom:20px;
+}
 
-    .buttons {
-      position: relative;
-      height: 120px;
-    }
+.buttons{
+  position:relative;
+  height:120px;
+}
 
-    button {
-      border: none;
-      border-radius: 999px;
-      padding: 12px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: absolute;
-    }
+button{
+  border:none;
+  border-radius:999px;
+  padding:12px 24px;
+  font-size:16px;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  position:absolute;
+}
 
-    #yesBtn {
-      background: #ff4d6d;
-      color: white;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+#yesBtn{
+  background:#ff4d6d;
+  color:white;
+  left:50%;
+  transform:translateX(-50%);
+}
 
-    #noBtn {
-      background: #ffd6e0;
-      color: #ff4d6d;
-      top: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+#noBtn{
+  background:#ffd6e0;
+  color:#ff4d6d;
+  top:60px;
+  left:50%;
+  transform:translateX(-50%);
+}
 
-    .hidden {
-      display: none;
-    }
+.hidden{display:none;}
 
-    .celebrate {
-      animation: pop 0.8s ease;
-    }
+.love{
+  animation:pop 0.8s ease;
+}
 
-    @keyframes pop {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+@keyframes pop{
+  0%{transform:scale(0.5);opacity:0;}
+  100%{transform:scale(1);opacity:1;}
+}
 
-    .stickers {
-      font-size: 40px;
-      margin-top: 15px;
-    }
-  </style>
+.couples{
+  font-size:40px;
+  margin-top:10px;
+}
+
+.flowers, .hearts{
+  position:absolute;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  top:0;
+  left:0;
+}
+
+.flower, .heart{
+  position:absolute;
+  font-size:24px;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh);opacity:0;}
+  10%{opacity:1;}
+  100%{transform:translateY(-10vh);opacity:0;}
+}
+
+.big-love{
+  font-size:32px;
+  color:#ff4d6d;
+  margin-top:10px;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card" id="mainCard">
-    <h1>Will you be my Valentine? 💘</h1>
+<div class="flowers"></div>
+<div class="hearts"></div>
 
-    <div class="buttons">
-      <button id="yesBtn">YES 💕</button>
-      <button id="noBtn">NO 🙄</button>
-    </div>
+<div class="card" id="mainCard">
+  <h1>Will you be my Valentine? 💘</h1>
+  <div class="buttons">
+    <button id="yesBtn">YES 💕</button>
+    <button id="noBtn">NO 🙄</button>
   </div>
+</div>
 
-  <div class="card hidden celebrate" id="loveCard">
-    <h1>YAY! You're my Valentine 🥰💖</h1>
-    <div class="stickers">
-      🤗💞🧸💋💘  
-    </div>
-    <p style="margin-top:10px;color:#ff4d6d;">
-      Officially taken. No refunds 😌
-    </p>
-  </div>
+<div class="card hidden love" id="loveCard">
+  <h1 class="big-love">I LOVE YOU 💖</h1>
+  <div class="couples">👩‍❤️‍👨 💑 👩‍❤️‍👨</div>
+  <p style="color:#ff4d6d;margin-top:10px;">
+    You got me forever 🥹💞
+  </p>
+</div>
 
-  <script>
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const mainCard = document.getElementById("mainCard");
-    const loveCard = document.getElementById("loveCard");
+<script>
+const yesBtn=document.getElementById("yesBtn");
+const noBtn=document.getElementById("noBtn");
+const mainCard=document.getElementById("mainCard");
+const loveCard=document.getElementById("loveCard");
+const flowers=document.querySelector(".flowers");
+const hearts=document.querySelector(".hearts");
 
-    let scale = 1;
+let scale=1;
 
-    noBtn.addEventListener("click", () => {
-      scale += 0.3;
-      yesBtn.style.transform = `translateX(-50%) scale(${scale})`;
+noBtn.addEventListener("click",()=>{
+  scale+=0.3;
+  yesBtn.style.transform=`translateX(-50%) scale(${scale})`;
+  noBtn.style.left=`calc(50% + ${Math.random()*80-40}px)`;
+});
 
-      const x = Math.random() * 60 - 30;
-      const y = Math.random() * 20 + 60;
-      noBtn.style.left = `calc(50% + ${x}px)`;
-      noBtn.style.top = `${y}px`;
-    });
+yesBtn.addEventListener("click",()=>{
+  mainCard.classList.add("hidden");
+  loveCard.classList.remove("hidden");
+  createHearts();
+});
 
-    yesBtn.addEventListener("click", () => {
-      mainCard.classList.add("hidden");
-      loveCard.classList.remove("hidden");
-    });
-  </script>
+function createFlowers(){
+  for(let i=0;i<15;i++){
+    let f=document.createElement("div");
+    f.className="flower";
+    f.innerHTML="🌸";
+    f.style.left=Math.random()*100+"%";
+    f.style.animationDelay=Math.random()*5+"s";
+    flowers.appendChild(f);
+  }
+}
+
+function createHearts(){
+  for(let i=0;i<25;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💖";
+    h.style.left=Math.random()*100+"%";
+    h.style.animationDelay=Math.random()*3+"s";
+    hearts.appendChild(h);
+  }
+}
+
+createFlowers();
+</script>
 
 </body>
 </html>
