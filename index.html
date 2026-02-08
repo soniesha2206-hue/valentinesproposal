@@ -1,194 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For Aduu 💗</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>For Aduu 💗</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body{
-  margin:0;
-  height:100vh;
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#ffb6c1,#ffe4e1);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-}
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
 
-.card{
-  background:#fff;
-  padding:30px;
-  border-radius:25px;
-  text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,0.15);
-  max-width:340px;
-  width:90%;
-  position:relative;
-  z-index:2;
-}
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 340px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      z-index: 2;
+    }
 
-h1{
-  color:#ff4d6d;
-  margin-bottom:20px;
-}
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 20px;
+    }
 
-.buttons{
-  position:relative;
-  height:120px;
-}
+    .buttons {
+      position: relative;
+      height: 120px;
+    }
 
-button{
-  border:none;
-  border-radius:999px;
-  padding:12px 24px;
-  font-size:16px;
-  cursor:pointer;
-  transition:all 0.3s ease;
-  position:absolute;
-}
+    button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-#yesBtn{
-  background:#ff4d6d;
-  color:white;
-  left:50%;
-  transform:translateX(-50%);
-}
+    .yes {
+      background: #ff4d6d;
+      color: white;
+      margin-right: 10px;
+    }
 
-#noBtn{
-  background:#ffd6e0;
-  color:#ff4d6d;
-  top:60px;
-  left:50%;
-  transform:translateX(-50%);
-}
+    .no {
+      background: #ccc;
+      position: absolute;
+    }
 
-.hidden{display:none;}
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+    }
 
-.love{
-  animation:pop 0.8s ease;
-}
-
-@keyframes pop{
-  0%{transform:scale(0.5);opacity:0;}
-  100%{transform:scale(1);opacity:1;}
-}
-
-.flowers,.hearts{
-  position:absolute;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  top:0;
-  left:0;
-}
-
-.flower,.heart{
-  position:absolute;
-  font-size:24px;
-  animation:float 6s linear infinite;
-}
-
-@keyframes float{
-  0%{transform:translateY(100vh);opacity:0;}
-  10%{opacity:1;}
-  100%{transform:translateY(-10vh);opacity:0;}
-}
-
-.big-love{
-  font-size:32px;
-  color:#ff4d6d;
-  margin-top:10px;
-  animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.1);}
-  100%{transform:scale(1);}
-}
-
-.couples{
-  font-size:40px;
-  margin-top:10px;
-}
-</style>
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="flowers"></div>
-<div class="hearts"></div>
+  <!-- 🎶 MUSIC -->
+  <audio id="bg-music">
+    <source src="daylight.mp3" type="audio/mpeg">
+  </audio>
 
-<div class="card" id="mainCard">
-  <h1>Aduu, will you be my Valentine? 💘</h1>
-  <div class="buttons">
-    <button id="yesBtn">YES 💕</button>
-    <button id="noBtn">NO 🙄</button>
+  <!-- 💗 CONTENT -->
+  <div class="card" id="content">
+    <h1>Will you be my Valentine? 💘</h1>
+
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">YES 💗</button>
+      <button class="no" id="noBtn" onclick="moveNo()">NO 😭</button>
+    </div>
   </div>
-</div>
 
-<div class="card hidden love" id="loveCard">
-  <h1 class="big-love">I LOVE YOU, ADUU 💖</h1>
-  <div class="couples">👩‍❤️‍👨 💑 👩‍❤️‍👨</div>
-  <p style="color:#ff4d6d;margin-top:10px;">
-    It’s golden, like daylight ✨
-  </p>
-</div>
+  <!-- 🧠 SCRIPT -->
+  <script>
+    const noBtn = document.getElementById("noBtn");
 
-<!-- MUSIC -->
-<audio id="music" src="daylight.mp3"></audio>
+    function moveNo() {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 100 - 50;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
 
-<script>
-const yesBtn=document.getElementById("yesBtn");
-const noBtn=document.getElementById("noBtn");
-const mainCard=document.getElementById("mainCard");
-const loveCard=document.getElementById("loveCard");
-const flowers=document.querySelector(".flowers");
-const hearts=document.querySelector(".hearts");
-const music=document.getElementById("music");
+    function sayYes() {
+      const music = document.getElementById("bg-music");
+      music.volume = 0.7;
+      music.play();
 
-let scale=1;
+      document.getElementById("content").innerHTML = `
+        <h1>I LOVE YOU ADUU 🥹💗</h1>
+        <p>You are my Valentine 🌸</p>
+        <div style="font-size:36px;">💖💞💘💝💗</div>
+      `;
 
-noBtn.addEventListener("click",()=>{
-  scale+=0.3;
-  yesBtn.style.transform=`translateX(-50%) scale(${scale})`;
-  noBtn.style.left=`calc(50% + ${Math.random()*80-40}px)`;
-});
+      createHearts();
+    }
 
-yesBtn.addEventListener("click",()=>{
-  mainCard.classList.add("hidden");
-  loveCard.classList.remove("hidden");
-  music.volume=0.6;
-  music.play();
-  createHearts();
-});
+    function createHearts() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(heart);
 
-function createFlowers(){
-  for(let i=0;i<15;i++){
-    let f=document.createElement("div");
-    f.className="flower";
-    f.innerHTML="🌸";
-    f.style.left=Math.random()*100+"%";
-    f.style.animationDelay=Math.random()*5+"s";
-    flowers.appendChild(f);
-  }
-}
-
-function createHearts(){
-  for(let i=0;i<30;i++){
-    let h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="💖";
-    h.style.left=Math.random()*100+"%";
-    h.style.animationDelay=Math.random()*3+"s";
-    hearts.appendChild(h);
-  }
-}
-
-createFlowers();
-</script>
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
 
 </body>
 </html>
